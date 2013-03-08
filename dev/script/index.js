@@ -82,5 +82,7 @@ $(function() {
     $('body').attr('class', 'status-end');
     return _gaq.push(['_trackEvent', 'Multimedia', 'Ended']);
   });
-  return audio.src = 'http://sw5dev.myqnapcloud.com/wbc/harlem_shake.' + type;
+  return setTimeout(function() {
+    return audio.src = 'http://sw5dev.myqnapcloud.com/wbc/harlem_shake.' + type;
+  }, 100);
 });
