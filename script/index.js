@@ -34,7 +34,7 @@ $(function() {
     audio.currentTime = 0;
     return _gaq.push(['_trackEvent', 'Shake', 'Stop']);
   };
-  audio.src = 'multimedia/harlem_shake.' + (navigator.userAgent.toLowerCase().indexOf(”msie”) > 0 ? 'mp3' : 'ogg');
+  audio.src = 'multimedia/harlem_shake.' + (navigator.userAgent.toLowerCase().indexOf("msie") > 0 ? 'mp3' : 'ogg');
   audio.preload = "auto";
   audio.addEventListener('loadeddata', function() {
     btnPlay.on('click', play);
