@@ -38,7 +38,7 @@ $ ->
   audio.addEventListener 'loadeddata', () ->
     btnPlay.on('click', play)
     $('body').attr('class','status-ready')
-    _gaq.push(['_trackEvent', 'Multimedia', 'Loaded']);
+    _gaq.push(['_trackEvent', 'Multimedia', 'Loaded'])
 
   audio.addEventListener 'play', () ->
     $('body').attr('class','status-start')
@@ -46,17 +46,26 @@ $ ->
       if audio.currentTime > 15.5
         $('body').attr('class','status-all')
         $(audio).off 'timeupdate'
-    _gaq.push(['_trackEvent', 'Multimedia', 'Play']);
+    _gaq.push(['_trackEvent', 'Multimedia', 'Play'])
 
   audio.addEventListener 'error', (e) ->
     $('body').attr('class','status-ready')
-    _gaq.push(['_trackEvent', 'Multimedia', 'Error', e]);
+    _gaq.push(['_trackEvent', 'Multimedia', 'Error', e])
 
   audio.addEventListener 'pause', () ->
     $('body').attr('class','status-ready')
 
-    _gaq.push(['_trackEvent', 'Multimedia', 'Pause']);
+    _gaq.push(['_trackEvent', 'Multimedia', 'Pause'])
+
+  audio.addEventListener 'progress', ()->
+    if(audio.duration && audio.buffered.end(0))
+        if(resuming == 1)
+            resuming = 0
+            resumeplaypos = ReadCookie('resumeplaypos')
+            audio.currentTime = resumeplaypos
+        loaded = (audio.buffered.end(0) / audio.duration) * 100
+        $('#load').text('LOADING... ' + loaded + '%')
 
   audio.addEventListener 'ended', () ->
     $('body').attr('class','status-end')
-    _gaq.push(['_trackEvent', 'Multimedia', 'Ended']);
+    _gaq.push(['_trackEvent', 'Multimedia', 'Ended'])

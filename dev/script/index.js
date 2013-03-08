@@ -67,6 +67,18 @@ $(function() {
     $('body').attr('class', 'status-ready');
     return _gaq.push(['_trackEvent', 'Multimedia', 'Pause']);
   });
+  audio.addEventListener('progress', function() {
+    var loaded, resumeplaypos, resuming;
+    if (audio.duration && audio.buffered.end(0)) {
+      if (resuming === 1) {
+        resuming = 0;
+        resumeplaypos = ReadCookie('resumeplaypos');
+        audio.currentTime = resumeplaypos;
+      }
+      loaded = (audio.buffered.end(0) / audio.duration) * 100;
+      return $('#load').text('LOADING... ' + loaded + '%');
+    }
+  });
   return audio.addEventListener('ended', function() {
     $('body').attr('class', 'status-end');
     return _gaq.push(['_trackEvent', 'Multimedia', 'Ended']);
