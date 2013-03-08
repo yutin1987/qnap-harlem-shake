@@ -5,10 +5,11 @@ html
     meta(name="apple-mobile-web-app-capable",content="yes")
     meta(name='viewport', content='width=device-width, target-densitydpi=device-dpi, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no')
     meta(name='author', content='JustinLiu')
-    meta(property="og:title",content="&#x6211;&#x611b;&#x53f0;&#x7063;&#xff0c;&#x6211;&#x652f;&#x6301;&#x4e2d;&#x83ef;&#x968a;")
+    meta(property="og:title",content="我愛台灣，我支持中華隊")
     meta(property="og:type",content="activity")
     meta(property="og:site_name",content="QNAP Harlem Shake")
     meta(property="fb:admins",content="1678986882")
+    meta(property="og:image",content="http://yuting1987.github.com/qnap-harlem-shake/style/wbc_logo.png")
     link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Roboto')
     link(rel='stylesheet', type='text/css', href='./style/index.css')
     script(type='text/javascript', src='./script/jquery.js')
@@ -31,3 +32,14 @@ html
     #load LOADING...
     #tw
     #head
+    #fb-root
+    script
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/zh_TW/all.js#xfbml=1&appId=561910660486454";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    #fb-like
+      .fb-like(data-href="http://yuting1987.github.com/qnap-harlem-shake/",data-send="true",data-width="450",data-show-faces="true")

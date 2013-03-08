@@ -92,6 +92,23 @@ $icon-size: 64px
   20%, 40%, 60%, 80%
     +transform(translateX(26px) scale(3))
 
++keyframes(box4)
+  0%
+    +transform(scale(1) rotate(0deg))
+    +opacity(.8)
+  40%
+    +transform(scale(1.5) rotate(-120deg))
+    +opacity(1)
+  80%
+    +transform(scale(1) rotate(-240deg))
+    +opacity(.8)
+  81%
+    +transform(scale(1) rotate(-240deg))
+    +opacity(.3)
+  100%
+    +transform(scale(1) rotate(-360deg))
+    +opacity(.3)
+
 +keyframes(box5)  
   0%
     +transform(translateX(512px) rotate(0deg))
@@ -171,7 +188,7 @@ body
   background-size: contain
   background-position: center center
   background-repeat: no-repeat
-  background-image: inline-image("gogo.jpg")
+  background-image: inline-image("gogo.png")
   +opacity(0)
   +transition(opacity, 1s)
 
@@ -241,6 +258,12 @@ body
   background-image: inline-image("head.png")
   +animate(tip, 3s)
 
+#fb-like
+  width: 100%
+  position: fixed
+  left: 0px
+  bottom: 0px
+  padding-left: 5px
 
 .status-ready
   #play
@@ -275,7 +298,8 @@ body
         top: $icon-size * 0.7
         +animate(bounce, .6s)
       &.box4
-        +animate(shake, .6s)
+        left: -$icon-size * 6
+        +animate(box4, .6s)
       &.box5
         top: -$icon-size * 1.4
         +animate(box5, .6s)
