@@ -1,0 +1,149 @@
+@import "compass"
+@import "../sass_lib/jt.style.sass"
+@import "compass/css3/opacity"
+
+$icon-size: 64px
+
++keyframes(shake)
+  0%
+    +transform(translateX(0))
+  10%
+    +transform(translateX(-16px))
+  20%
+    +transform(translateX(16px))
+  30%
+    +transform(translateX(-16px))
+  40%
+    +transform(translateX(16px))
+  50%
+    +transform(translateX(-16px))
+  60%
+    +transform(translateX(16px))
+  70%
+    +transform(translateX(-16px))
+  80%
+    +transform(translateX(16px))
+  90%
+    +transform(translateX(-16px))
+  100%
+    +transform(translateX(0))
+
+
+#play
+  width: 64px
+  height: 64px
+  position: fixed
+  right: 5px
+  bottom: 5px
+  cursor: pointer
+  background-size: cover
+  background-image: inline-image("btn_play.png")
+
+#title
+  width: 100%
+  margin: 0 auto
+  text-align: center
+  font-size: 72px
+  position: fixed
+  top: 0px
+  left: 0px
+  +opacity(1)
+  +transition(opacity, 1s)
+
+#gogo
+  width: 100%
+  height: 200px
+  position: fixed
+  top: 0px
+  left: 0px
+  background-size: contain
+  background-position: center center
+  background-repeat: no-repeat
+  background-image: inline-image("gogo.jpg")
+  +opacity(0)
+  +transition(opacity, 1s)
+
+#box-list
+  position: fixed
+  left: 50%
+  top: 50%
+  .box
+    width: $icon-size
+    height: $icon-size
+    position: absolute
+    left: -$icon-size / 2
+    top: -$icon-size / 2
+    background-size: cover
+    &.main
+      background-image: inline-image("wbc_logo.png")
+    &.box1
+      background-image: inline-image("icon_djstation.png")
+      left: -$icon-size * 6.5
+    &.box2
+      background-image: inline-image("icon_music_station.png")
+      left: -$icon-size * 5
+    &.box3
+      background-image: inline-image("icon_video_station.png")
+      left: -$icon-size * 3.5
+    &.box4
+      background-image: inline-image("icon_xbmc.png")
+      left: -$icon-size * 2
+    &.box5
+      background-image: inline-image("icon_hd_station.png")
+      left: $icon-size * 1
+    &.box6
+      background-image: inline-image("icon_photo_station.png")
+      left: $icon-size * 2.5
+    &.box7
+      background-image: inline-image("icon_surveillance_station.png")
+      left: $icon-size * 4
+    &.box8
+      background-image: inline-image("icon_happyget.png")
+      left: $icon-size * 5.5
+
+#tw
+  width: 350px
+  height: 350px
+  position: fixed
+  left: -350px
+  bottom: -350px
+  background-size: cover
+  background-image: inline-image("tw.png")
+  +transition(left, .5s)
+  +transition(bottom, .5s)
+
+.status-start
+  .box
+    &.main
+      +animate(shake, 1s, 2s)
+
+.status-all
+  .box
+    &.main
+      +animate(shake, .6s)
+    &.box1
+      +animate(shake, .6s)
+    &.box2
+      +animate(shake, .6s)
+    &.box3
+      +animate(shake, .6s)
+    &.box4
+      +animate(shake, .6s)
+    &.box5
+      +animate(shake, .6s)
+    &.box6
+      +animate(shake, .6s)
+    &.box7
+      +animate(shake, .6s)
+  #title
+    +animate(shake, .6s)
+
+.status-end
+  .box
+  #tw
+    left: 0px
+    bottom: 0px
+  #title
+    +opacity(0)
+  #gogo
+    +opacity(1)
