@@ -72,7 +72,27 @@ $icon-size: 64px
   100%
     +transform(skewX(0deg))
 
-+keyframes(rightleft)  
++keyframes(main)
+  0% 
+    +transform(scale(1)) 
+  10%, 20% 
+    +transform(translateX($icon-size) scale(0.9) rotate(-3deg))
+  30%, 50%, 70%, 90% 
+    +transform(scale(1.1) rotate(3deg))
+  40%, 60%, 80% 
+    +transform(translateX($icon-size) scale(1.1) rotate(-3deg))
+  100% 
+    +transform(scale(1) rotate(0))
+
++keyframes(box1)
+  0%, 100%
+    +transform(translateX(0) scale(3))
+  10%, 30%, 50%, 70%, 90%
+    +transform(translateX(-26px) scale(2.7))
+  20%, 40%, 60%, 80%
+    +transform(translateX(26px) scale(3))
+
++keyframes(box5)  
   0%
     +transform(translateX(512px) rotate(0deg))
     +opacity(.3)
@@ -88,6 +108,13 @@ $icon-size: 64px
     +transform(translateX(-512px) rotate(0deg))
     +opacity(.3)
 
++keyframes(box7)
+  0%
+    +transform(scale(1) rotate(0deg))
+  50%
+    +transform(scale(1.5) rotate(360deg))
+  100%
+    +transform(scale(1) rotate(0deg))
 
 +keyframes(load)
   0%
@@ -236,22 +263,28 @@ body
   #box-list
     .box
       &.main
-        +animate(tada, .6s)
+        +animate(main, .6s)
       &.box1
-        +animate(shake, .6s)
+        position: fixed
+        top: 40%
+        left: -$icon-size * 0.7
+        +animate(box1, .6s)
       &.box2
         +animate(shake, .6s)
       &.box3
+        top: $icon-size * 0.7
         +animate(bounce, .6s)
       &.box4
         +animate(shake, .6s)
       &.box5
-        top: -$icon-size * 2.4
-        +animate(rightleft, .6s)
+        top: -$icon-size * 1.4
+        +animate(box5, .6s)
       &.box6
+        top: $icon-size * 0.7
         +animate(wobble, .6s)
       &.box7
-        +animate(shake, .6s)
+        top: $icon-size * 1.3
+        +animate(box7, .6s)
   #title
     +animate(tada, .6s)
   #play
