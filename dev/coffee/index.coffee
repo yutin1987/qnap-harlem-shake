@@ -33,8 +33,6 @@ $ ->
   type = 'mp3' if userAgent.indexOf("msie")>0
   type = 'm4a' if userAgent.indexOf("safari")>0
 
-  audio.src = 'http://sw5dev.myqnapcloud.com/wbc/harlem_shake.' + type
-  audio.preload = "auto";
   audio.addEventListener 'loadeddata', () ->
     btnPlay.on('click', play)
     $('body').attr('class','status-ready')
@@ -69,3 +67,6 @@ $ ->
   audio.addEventListener 'ended', () ->
     $('body').attr('class','status-end')
     _gaq.push(['_trackEvent', 'Multimedia', 'Ended'])
+
+  audio.src = 'http://sw5dev.myqnapcloud.com/wbc/harlem_shake.' + type
+  audio.preload = "auto";

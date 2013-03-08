@@ -42,8 +42,6 @@ $(function() {
   if (userAgent.indexOf("safari") > 0) {
     type = 'm4a';
   }
-  audio.src = 'http://sw5dev.myqnapcloud.com/wbc/harlem_shake.' + type;
-  audio.preload = "auto";
   audio.addEventListener('loadeddata', function() {
     btnPlay.on('click', play);
     $('body').attr('class', 'status-ready');
@@ -79,8 +77,10 @@ $(function() {
       return $('#load').text('LOADING... ' + loaded + '%');
     }
   });
-  return audio.addEventListener('ended', function() {
+  audio.addEventListener('ended', function() {
     $('body').attr('class', 'status-end');
     return _gaq.push(['_trackEvent', 'Multimedia', 'Ended']);
   });
+  audio.src = 'http://sw5dev.myqnapcloud.com/wbc/harlem_shake.' + type;
+  return audio.preload = "auto";
 });
