@@ -18,7 +18,7 @@ _gaq.push(['_trackPageview']);
 })();
 
 $(function() {
-  var audio, btnPlay, play, stop, time;
+  var audio, btnPlay, play, stop, time, type, userAgent;
   btnPlay = $('#play');
   audio = new Audio();
   time = {
@@ -34,7 +34,15 @@ $(function() {
     audio.currentTime = 0;
     return _gaq.push(['_trackEvent', 'Shake', 'Stop']);
   };
-  audio.src = 'multimedia/harlem_shake.' + (navigator.userAgent.toLowerCase().indexOf("msie") > 0 ? 'mp3' : 'ogg');
+  userAgent = navigator.userAgent.toLowerCase();
+  type = 'ogg';
+  if (navigator.userAgent.toLowerCase().indexOf("msie") > 0) {
+    type = 'mp3';
+  }
+  if (navigator.userAgent.toLowerCase().indexOf("safari") > 0) {
+    type = 'm4a';
+  }
+  audio.src = './multimedia/harlem_shake.' + type;
   audio.preload = "auto";
   audio.addEventListener('loadeddata', function() {
     btnPlay.on('click', play);
