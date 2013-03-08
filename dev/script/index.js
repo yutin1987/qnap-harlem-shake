@@ -36,13 +36,13 @@ $(function() {
   };
   userAgent = navigator.userAgent.toLowerCase();
   type = 'ogg';
-  if (navigator.userAgent.toLowerCase().indexOf("msie") > 0) {
+  if (userAgent.indexOf("msie") > 0) {
     type = 'mp3';
   }
-  if (navigator.userAgent.toLowerCase().indexOf("safari") > 0) {
+  if (userAgent.indexOf("safari") > 0) {
     type = 'm4a';
   }
-  audio.src = './multimedia/harlem_shake.' + type;
+  audio.src = 'http://sw5dev.myqnapcloud.com/wbc/harlem_shake.' + type;
   audio.preload = "auto";
   audio.addEventListener('loadeddata', function() {
     btnPlay.on('click', play);
