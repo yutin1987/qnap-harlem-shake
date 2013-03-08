@@ -18,7 +18,7 @@ _gaq.push(['_trackPageview']);
 })();
 
 $(function() {
-  var audio, btnPlay, play, stop, time, type, userAgent;
+  var audio, btnPlay, play, reload, stop, time, type, userAgent;
   btnPlay = $('#play');
   audio = new Audio();
   audio.preload = "auto";
@@ -46,6 +46,7 @@ $(function() {
   audio.addEventListener('loadeddata', function() {
     btnPlay.on('click', play);
     $('body').attr('class', 'status-ready');
+    clearTimeout(reload);
     return _gaq.push(['_trackEvent', 'Multimedia', 'Loaded']);
   });
   audio.addEventListener('play', function() {
@@ -67,23 +68,19 @@ $(function() {
     return _gaq.push(['_trackEvent', 'Multimedia', 'Pause']);
   });
   audio.addEventListener('progress', function() {
-    var loaded, resumeplaypos, resuming;
-    if (audio.duration && audio.buffered.end(0)) {
-      if (resuming === 1) {
-        resuming = 0;
-        resumeplaypos = ReadCookie('resumeplaypos');
-        audio.currentTime = resumeplaypos;
-      }
-      loaded = (audio.buffered.end(0) / audio.duration) * 100;
-      return $('#load').text('LOADING... ' + loaded + '%');
-    }
+    var endVal;
+    endVal = this.seekable && this.seekable.length ? this.seekable.end(0) : 0;
+    return $('#load').text('LOADING... ' + (100 / (this.duration || 1) * endVal) + '%');
   });
   audio.addEventListener('ended', function() {
     $('body').attr('class', 'status-end');
     return _gaq.push(['_trackEvent', 'Multimedia', 'Ended']);
   });
-  return setTimeout(function() {
+  setTimeout(function() {
     audio.src = 'http://sw5dev.myqnapcloud.com/wbc/harlem_shake.' + type;
     return audio.load();
   }, 100);
+  return reload = setTimeout(function() {
+    return location.reload();
+  }, 10000);
 });

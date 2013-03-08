@@ -37,6 +37,7 @@ $ ->
   audio.addEventListener 'loadeddata', () ->
     btnPlay.on('click', play)
     $('body').attr('class','status-ready')
+    clearTimeout reload
     _gaq.push(['_trackEvent', 'Multimedia', 'Loaded'])
 
   audio.addEventListener 'play', () ->
@@ -57,7 +58,7 @@ $ ->
     _gaq.push(['_trackEvent', 'Multimedia', 'Pause'])
 
   audio.addEventListener 'progress', ()->
-    endVal = this.seekable && this.seekable.length ? this.seekable.end(0) : 0;
+    endVal = if this.seekable && this.seekable.length then this.seekable.end(0) else 0
     $('#load').text('LOADING... ' + (100 / (this.duration || 1) * endVal) + '%')
 
   audio.addEventListener 'ended', () ->
@@ -68,3 +69,7 @@ $ ->
     audio.src = 'http://sw5dev.myqnapcloud.com/wbc/harlem_shake.' + type
     audio.load()
   , 100
+
+  reload = setTimeout () ->
+    location.reload()
+  , 10000
