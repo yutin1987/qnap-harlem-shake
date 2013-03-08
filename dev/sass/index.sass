@@ -97,7 +97,7 @@ $icon-size: 64px
     +transform(scale(1) rotate(0deg))
     +opacity(.8)
   40%
-    +transform(scale(1.5) rotate(-120deg))
+    +transform(translateX(-40px) scale(1.5) rotate(-120deg))
     +opacity(1)
   80%
     +transform(scale(1) rotate(-240deg))
@@ -299,6 +299,7 @@ body
         +animate(bounce, .6s)
       &.box4
         left: -$icon-size * 6
+        top: $icon-size * 1
         +animate(box4, .6s)
       &.box5
         top: -$icon-size * 1.4
