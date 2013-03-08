@@ -28,7 +28,7 @@ $ ->
 
     _gaq.push(['_trackEvent', 'Shake', 'Stop']);
 
-  audio.src = 'multimedia/harlem_shake.' + if navigator.userAgent.indexOf('Firefox')>0 then 'ogg' else 'm4a';
+  audio.src = 'multimedia/harlem_shake.' + if navigator.userAgent.toLowerCase().indexOf(”msie”)>0 then 'mp3' else 'ogg';
   audio.preload = "auto";
   audio.addEventListener 'loadeddata', () ->
     btnPlay.on('click', play)
