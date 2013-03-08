@@ -28,6 +28,8 @@ $icon-size: 64px
   100%
     +transform(translateX(0))
 
+body
+  font-family: 'Roboto', sans-serif
 
 #play
   width: 64px
@@ -38,6 +40,8 @@ $icon-size: 64px
   cursor: pointer
   background-size: cover
   background-image: inline-image("btn_play.png")
+  +opacity(1)
+  +transition(opacity, .4s)
 
 #title
   width: 100%
@@ -116,6 +120,8 @@ $icon-size: 64px
   .box
     &.main
       +animate(shake, 1s, 2s)
+  #play
+    +opacity(0)
 
 .status-all
   .box
@@ -137,6 +143,8 @@ $icon-size: 64px
       +animate(shake, .6s)
   #title
     +animate(shake, .6s)
+  #play
+    +opacity(0)
 
 .status-end
   .box
