@@ -36,10 +36,10 @@ $ ->
 
   audio.addEventListener 'play', () ->
     $('body').attr('class','status-start')
-    audio.addEventListener 'timeupdate', () ->
+    $(audio).on 'timeupdate', () ->
       if audio.currentTime > 15.5
         $('body').attr('class','status-all')
-        audio.removeEventListener 'timeupdate'
+        $(audio).off 'timeupdate'
     _gaq.push(['_trackEvent', 'Multimedia', 'Play']);
 
   audio.addEventListener 'error', (e) ->

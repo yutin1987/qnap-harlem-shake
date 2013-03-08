@@ -44,10 +44,10 @@ $(function() {
   });
   audio.addEventListener('play', function() {
     $('body').attr('class', 'status-start');
-    audio.addEventListener('timeupdate', function() {
+    $(audio).on('timeupdate', function() {
       if (audio.currentTime > 15.5) {
         $('body').attr('class', 'status-all');
-        return audio.removeEventListener('timeupdate');
+        return $(audio).off('timeupdate');
       }
     });
     return _gaq.push(['_trackEvent', 'Multimedia', 'Play']);
