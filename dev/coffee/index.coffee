@@ -57,13 +57,8 @@ $ ->
     _gaq.push(['_trackEvent', 'Multimedia', 'Pause'])
 
   audio.addEventListener 'progress', ()->
-    if(audio.duration && audio.buffered.end(0))
-        if(resuming == 1)
-            resuming = 0
-            resumeplaypos = ReadCookie('resumeplaypos')
-            audio.currentTime = resumeplaypos
-        loaded = (audio.buffered.end(0) / audio.duration) * 100
-        $('#load').text('LOADING... ' + loaded + '%')
+    endVal = this.seekable && this.seekable.length ? this.seekable.end(0) : 0;
+    $('#load').text('LOADING... ' + (100 / (this.duration || 1) * endVal) + '%')
 
   audio.addEventListener 'ended', () ->
     $('body').attr('class','status-end')
