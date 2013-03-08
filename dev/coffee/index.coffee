@@ -13,6 +13,7 @@ do ->
 $ ->
   btnPlay = $ '#play'
   audio = new Audio()
+  audio.preload = "auto";
   time =
     timeAll: null,
     timeStop: null
@@ -67,6 +68,5 @@ $ ->
   audio.addEventListener 'ended', () ->
     $('body').attr('class','status-end')
     _gaq.push(['_trackEvent', 'Multimedia', 'Ended'])
-
+    
   audio.src = 'http://sw5dev.myqnapcloud.com/wbc/harlem_shake.' + type
-  audio.preload = "auto";

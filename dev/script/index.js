@@ -21,6 +21,7 @@ $(function() {
   var audio, btnPlay, play, stop, time, type, userAgent;
   btnPlay = $('#play');
   audio = new Audio();
+  audio.preload = "auto";
   time = {
     timeAll: null,
     timeStop: null
@@ -81,6 +82,5 @@ $(function() {
     $('body').attr('class', 'status-end');
     return _gaq.push(['_trackEvent', 'Multimedia', 'Ended']);
   });
-  audio.src = 'http://sw5dev.myqnapcloud.com/wbc/harlem_shake.' + type;
-  return audio.preload = "auto";
+  return audio.src = 'http://sw5dev.myqnapcloud.com/wbc/harlem_shake.' + type;
 });
