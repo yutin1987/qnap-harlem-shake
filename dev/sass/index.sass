@@ -28,6 +28,14 @@ $icon-size: 64px
   100%
     +transform(translateX(0))
 
++keyframes(load)
+  0%
+    +opacity(.3)
+  50%
+    +opacity(1)
+  100%
+    +opacity(.3)
+
 body
   font-family: 'Roboto', sans-serif
 
@@ -42,6 +50,7 @@ body
   background-image: inline-image("btn_play.png")
   +opacity(1)
   +transition(opacity, .4s)
+  display: none
 
 #title
   width: 100%
@@ -116,12 +125,28 @@ body
   +transition(left, .5s)
   +transition(bottom, .5s)
 
+#load
+  font-size: 24px
+  position: fixed
+  right: 3px
+  bottom: 3px
+  +animate(load, 1s)
+
+.status-ready
+  #play
+    display: block
+  #load
+    display: none
+
 .status-start
   .box
     &.main
       +animate(shake, 1s, 2s)
   #play
     +opacity(0)
+    display: block
+  #load
+    display: none
 
 .status-all
   .box
@@ -145,6 +170,9 @@ body
     +animate(shake, .6s)
   #play
     +opacity(0)
+    display: block
+  #load
+    display: none
 
 .status-end
   .box
@@ -155,3 +183,7 @@ body
     +opacity(0)
   #gogo
     +opacity(1)
+  #play
+    display: block
+  #load
+    display: none

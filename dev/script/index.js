@@ -38,6 +38,7 @@ $(function() {
   audio.preload = "auto";
   audio.addEventListener('loadeddata', function() {
     btnPlay.on('click', play);
+    $('body').attr('class', 'status-ready');
     return _gaq.push(['_trackEvent', 'Multimedia', 'Loaded']);
   });
   audio.addEventListener('play', function() {

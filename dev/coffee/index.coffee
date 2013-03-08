@@ -32,6 +32,7 @@ $ ->
   audio.preload = "auto";
   audio.addEventListener 'loadeddata', () ->
     btnPlay.on('click', play)
+    $('body').attr('class','status-ready')
     _gaq.push(['_trackEvent', 'Multimedia', 'Loaded']);
 
   audio.addEventListener 'play', () ->
