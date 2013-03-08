@@ -71,4 +71,5 @@ $ ->
 
   setTimeout ()->
     audio.src = 'http://sw5dev.myqnapcloud.com/wbc/harlem_shake.' + type
+    audio.load()
   , 100
